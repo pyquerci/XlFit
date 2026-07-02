@@ -6,7 +6,7 @@ A command-line tool that auto-fits columns and rows in Excel files via COM autom
 
 ## Overview
 
-`XlFit` opens a given `.xlsx` file through Excel COM automation, applies auto-fit to every column and row on every sheet, and saves the file in place, all without ever showing the Excel window. Feedback is always given through native Windows dialogs, whether the tool is run from the command line or through the Windows Explorer right-click context menu.
+`XlFit` opens a given `.xls`or `.xlsx` file through Excel COM automation, applies auto-fit to every column and row on every sheet, and saves the file in place, all without ever showing the Excel window. Feedback is always given through native Windows dialogs, whether the tool is run from the command line or through the Windows Explorer right-click context menu.
 
 It is particularly useful as a quick finishing step after generating spreadsheets programmatically (e.g. via `openpyxl`, `pandas`, or exported reports), which often leave column widths at their default, unreadable size.
 
@@ -138,8 +138,8 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 XlFit.ico icon used in this project was downloaded from Icon-Icons.com under the CC BY 4.0 license.
 
-Designed by Those Icons.
-Source: https://icon-icons.com/authors/639-those-icons
+- Author: `Those Icons`.
+- Source: https://icon-icons.com/authors/639-those-icons
 
 ---
 
