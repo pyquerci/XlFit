@@ -45,18 +45,18 @@ Two pre-compiled Windows executables are included in the repository, built with 
 
 | Executable | Intended use | Build command |
 |---|---|---|
-| `XlFit.exe` | Command line — `-h`, `-a`, and `-f` output is shown in the console | `pyinstaller --onefile --manifest="XlFit.manifest" XlFit.py` |
-| `XlFitGUI.exe` | Windows Explorer context menu / "Open with" — no console window ever shown, feedback via native dialogs only | `pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py` |
+| `XlFit.exe` | Command line: `-h`, `-a`, and `-f` output is shown in the console | `pyinstaller --onefile --manifest="XlFit.manifest" XlFit.py` |
+| `XlFitGUI.exe` | Windows Explorer context menu / "Open with": no console window ever shown | `pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py` |
 
 Both are built from the exact same code; the only difference is the presence of `--noconsole` and `--icon`. `--manifest` embeds `XlFit.manifest` in both, which declares per-monitor DPI awareness so dialogs render sharply on high-DPI displays.
 
 No Python installation is needed, just download and run the executable you need. For convenience, you can add the folder containing them to your system `PATH`; for example, I keep mine in `C:\Tools\XlFit`.
 
-**Why two executables?** `--noconsole` is required for a clean, flash-free experience when launching from the context menu or "Open with" — but it also means `-h/--help` and `-a/--about` produce no visible output, since there is no console attached to print to (see [Known Issues](#known-issues)). Keeping `XlFit.exe` console-enabled means the full CLI, including help and about, always works as expected from a terminal.
+**Why two executables?** `--noconsole` is required for a clean, flash-free experience when launching from the context menu or "Open with", but it also means `-h/--help` and `-a/--about` produce no visible output, since there is no console attached to print to. That's expected: `XlFitGUI.exe` isn't designed to be used via CLI. Keeping `XlFit.exe` console-enabled means the full CLI, including `-h` and `-a`, always works as expected from a terminal. `XlFit.exe` is meant to be used via CLI only.
 
 #### About the icon
 
-The icon referenced when building `XlFitGUI.exe` (`XlFit.ico`) is included in this repository under the terms described in [Icon Credits](#icon-credits). If you'd rather use your own icon, replace `XlFit.ico` and reference it the same way in the `--icon` argument and in `AddContextMenu.reg`.
+The icon referenced when building `XlFitGUI.exe` (`XlFit.ico`) is included in this repository under the terms described in [Icon Credits](#icon-credits). If you'd rather use your own icon, replace `XlFit.ico` before building `XlFitGUI.exe`.
 
 ---
 
