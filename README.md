@@ -143,13 +143,6 @@ XlFit.ico icon used in this project was downloaded from Icon-Icons.com under the
 
 ---
 
-## Known Issues
-
-- Although Excel is launched with `Visible = False`, the Excel window may occasionally flash briefly on screen during processing. This is caused by Excel's own internal behavior during COM automation and is not something `XlFit` can fully control; it happens unpredictably and does not affect the outcome of the operation.
-- If `XlFit.exe` is built with `--noconsole` (the default, recommended build), `-h/--help` and `-a/--about` produce no visible output, even when run from a terminal, since the executable has no console attached to print to. Only `-f/--file` is affected by feedback via native dialogs; `-h` and `-a` require a build without `--noconsole` to work as expected.
-
----
-
 ## License
 
 This project is licensed under the **GNU General Public License v2.0 (GPLv2)**. You are free to use, modify, and distribute this software under the terms of that license. See the [LICENSE](LICENSE) file for the full license text.
