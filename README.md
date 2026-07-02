@@ -6,7 +6,7 @@ A command-line tool that auto-fits columns and rows in Excel files via COM autom
 
 ## Overview
 
-`XlFit` opens a given `.xls`or `.xlsx` file through Excel COM automation, applies auto-fit to every column and row on every sheet, and saves the file in place, all without ever showing the Excel window. Feedback is always given through native Windows dialogs, whether the tool is run from the command line or through the Windows Explorer right-click context menu.
+`XlFit` opens a given `.xls` or `.xlsx` file through Excel COM automation, applies auto-fit to every column and row on every sheet, and saves the file in place, all without ever showing the Excel window. Feedback is always given through native Windows dialogs, whether the tool is run from the command line or through the Windows Explorer right-click context menu.
 
 It is particularly useful as a quick finishing step after generating spreadsheets programmatically (e.g. via `openpyxl`, `pandas`, or exported reports), which often leave column widths at their default, unreadable size.
 
@@ -18,7 +18,7 @@ It is particularly useful as a quick finishing step after generating spreadsheet
 - Runs Excel invisibly in the background, no Excel window is shown during processing
 - Detects if the target file is already open in another program and warns the user instead of failing silently
 - Feedback is always given through native Windows message boxes
-- Can be integrated into the Windows Explorer right-click context menu for `.xlsx` files, via the included `.reg` files
+- Can be integrated into the Windows Explorer right-click context menu for `.xls`/`.xlsx` files, via the included `.reg` files
 
 ---
 
@@ -41,34 +41,22 @@ No installation required. Run directly with Python.
 
 ### Windows
 
-A pre-compiled Windows executable is included in the repository, built with PyInstaller 6.19.0 using the command:
+Two pre-compiled Windows executables are included in the repository, built with PyInstaller 6.19.0 from the same `XlFit.py` script but with different build options, depending on how you intend to use them:
 
-```bash
-pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py
-```
+| Executable | Intended use | Build command |
+|---|---|---|
+| `XlFit.exe` | Command line — `-h`, `-a`, and `-f` output is shown in the console | `pyinstaller --onefile --manifest="XlFit.manifest" XlFit.py` |
+| `XlFitGUI.exe` | Windows Explorer context menu / "Open with" — no console window ever shown, feedback via native dialogs only | `pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py` |
 
-- `--noconsole` suppresses the console window, since all feedback is given through native message boxes.
-- `--icon` sets the custom icon shown by the executable and, where configured, by the context menu entry.
-- `--manifest` embeds `XlFit.manifest`, which declares per-monitor DPI awareness so dialogs render sharply on high-DPI displays.
+Both are built from the exact same code; the only difference is the presence of `--noconsole` and `--icon`. `--manifest` embeds `XlFit.manifest` in both, which declares per-monitor DPI awareness so dialogs render sharply on high-DPI displays.
 
-No Python installation is needed, just download and run `XlFit.exe`. For convenience, you can add it to a folder in your system `PATH` to invoke it from any directory; for example, I keep mine in `C:\Tools\XlFit`.
+No Python installation is needed, just download and run the executable you need. For convenience, you can add the folder containing them to your system `PATH`; for example, I keep mine in `C:\Tools\XlFit`.
 
-**Note:** `--noconsole` is recommended if you only intend to use `XlFit.exe` through the `-f/--file` argument, either from the command line or from the Windows Explorer context menu, since feedback is always given via native dialogs regardless of the console. However, this means `-h/--help` and `-a/--about` will produce no visible output when run from the compiled `.exe`, since there is no console attached to print to (see [Known Issues](#known-issues)). If you want a fully functional CLI, including `-h` and `-a`, rebuild without `--noconsole`:
-
-```bash
-pyinstaller --onefile --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py
-```
+**Why two executables?** `--noconsole` is required for a clean, flash-free experience when launching from the context menu or "Open with" — but it also means `-h/--help` and `-a/--about` produce no visible output, since there is no console attached to print to (see [Known Issues](#known-issues)). Keeping `XlFit.exe` console-enabled means the full CLI, including help and about, always works as expected from a terminal.
 
 #### About the icon
 
-The icon referenced during the build (`XlFit.ico`) is **not included** in this repository, since it was originally extracted from Microsoft Excel's own resources — which are copyrighted and cannot be redistributed.
-
-To use your own icon:
-
-- Extract an icon from `excel.exe` yourself using a free tool such as [Resource Hacker](http://www.angusj.com/resourcehacker/) or [IcoFX](https://icofx.ro/), or
-- Use any `.ico` file of your choice (e.g. from a free icon set like [Icons8](https://icons8.com) or [Flaticon](https://www.flaticon.com))
-
-Then reference your chosen `.ico` file both in the `pyinstaller --icon` argument and, if you set up the context menu integration, in `AddContextMenu.reg`.
+The icon referenced when building `XlFitGUI.exe` (`XlFit.ico`) is included in this repository under the terms described in [Icon Credits](#icon-credits). If you'd rather use your own icon, replace `XlFit.ico` and reference it the same way in the `--icon` argument and in `AddContextMenu.reg`.
 
 ---
 
@@ -92,10 +80,10 @@ XlFit.py [-h]
 
 ```bash
 # Auto-fit a single Excel file
-XlFit.py -f report.xlsx
+XlFit.exe -f report.xlsx
 
 # Show author and version information
-XlFit.py -a
+XlFit.exe -a
 ```
 
 If the file is already open in another program, a warning dialog is shown and the file is left untouched. On success, a confirmation dialog is displayed; on failure, an error dialog reports what went wrong.
@@ -114,23 +102,30 @@ If the file is already open in another program, a warning dialog is shown and th
 
 ## Windows Explorer Context Menu Integration
 
-`XlFit` accepts a single file via `-f/--file`, which makes it a natural fit for the Windows Explorer right-click context menu: right-clicking an `.xlsx` file passes its path straight to `XlFit.exe -f "%1"`.
+`XlFit` accepts a single file via `-f/--file`, which makes it a natural fit for the Windows Explorer right-click context menu and the "Open with" dialog: both pass a file path straight to `-f "%1"`. This integration is designed to use **`XlFitGUI.exe`**, the console-free build, so no window ever flashes on screen.
 
 Two registry files are included for this purpose:
 
-- `AddContextMenu.reg` — adds an **"Excel Auto Fit"** entry to the right-click context menu of `.xlsx` files
-- `RemoveContextMenu.reg` — removes it
+- `AddContextMenu.reg` — adds an **"Excel Auto Fit"** entry to the right-click context menu of `.xls`/`.xlsx` files, and registers `XlFitGUI.exe` in the "Open with" list for both extensions
+- `RemoveContextMenu.reg` — removes both integrations
 
 ### Installing the context menu entry
 
-1. Place `XlFit.exe` in the path referenced by `AddContextMenu.reg` (`C:\Tools\XlFit\XlFit.exe` by default), or edit the `.reg` file to match your own installation path and icon.
+1. Place `XlFitGUI.exe` in the path referenced by `AddContextMenu.reg` (`C:\Tools\XlFit\XlFitGUI.exe` by default), or edit the `.reg` file to match your own installation path and icon.
 2. Double-click `AddContextMenu.reg` and confirm the prompt to merge it into the registry.
 
-Once installed, right-clicking any `.xlsx` file in Explorer will show an **"Excel Auto Fit"** option that runs `XlFit.exe -f` directly on that file.
+Once installed, right-clicking any `.xls`/`.xlsx` file in Explorer will show an **"Excel Auto Fit"** option, and `XlFitGUI.exe` will also appear as an option in the "Open with" dialog.
 
 ### Removing the context menu entry
 
-Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the registry key created by `AddContextMenu.reg`, removing the **"Excel Auto Fit"** entry from the context menu.
+Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the registry keys created by `AddContextMenu.reg`, removing both the context menu entry and the "Open with" registration.
+
+---
+
+## Known Issues
+
+- Although Excel is launched with `Visible = False`, the Excel window may occasionally flash briefly on screen during processing. This is caused by Excel's own internal behavior during COM automation and is not something `XlFit` can fully control; it happens unpredictably and does not affect the outcome of the operation.
+- `XlFitGUI.exe` is built with `--noconsole`, so `-h/--help` and `-a/--about` produce no visible output, even when run from a terminal, since the executable has no console attached to print to. Use `XlFit.exe` instead if you need the full CLI, including help and about.
 
 ---
 
