@@ -134,6 +134,15 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 ---
 
+## Icon Credits
+
+XlFit.ico icon used in this project was downloaded from Icon-Icons.com under the CC BY 4.0 license.
+
+Designed by Those Icons.
+Source: https://icon-icons.com/authors/639-those-icons
+
+---
+
 ## Known Issues
 
 - Although Excel is launched with `Visible = False`, the Excel window may occasionally flash briefly on screen during processing. This is caused by Excel's own internal behavior during COM automation and is not something `XlFit` can fully control; it happens unpredictably and does not affect the outcome of the operation.
