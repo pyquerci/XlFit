@@ -4,6 +4,6 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CLASSES_ROOT\Excel.Sheet.8\shell\XlFit]
 
-[-HKEY_CLASSES_ROOT\Applications\XlFit.exe]
+[-HKEY_CLASSES_ROOT\Applications\XlFitGUI.exe]
 
-[-HKEY_CLASSES_ROOT\.xls\OpenWithList\XlFit.exe]
+[-HKEY_CLASSES_ROOT\.xls\OpenWithList\XlFitGUI.exe]
