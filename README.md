@@ -94,15 +94,13 @@ If the file is already open in another program, a warning dialog is shown and th
 
 1. `XlFit` checks whether the target file is currently locked by another process (e.g. already open in Excel). If so, a warning dialog is shown and execution stops.
 2. Excel is launched in the background via COM automation (`Excel.Application`), with its window hidden and alerts disabled.
-3. The workbook is opened, and for every sheet: the used range is calculated, column widths are set to a wide baseline, then auto-fit is applied to both columns and rows.
+3. The workbook is opened and for every sheet the used range is calculated, column widths are set to a wide baseline, then auto-fit is applied to both columns and rows.
 4. The workbook is saved and closed.
 5. A native Windows dialog reports success or, if an error occurred, what went wrong.
 
 ---
 
 ## Windows Explorer Context Menu Integration
-
-`XlFit` accepts a single file via `-f/--file`, which makes it a natural fit for the Windows Explorer right-click context menu and the "Open with" dialog: both pass a file path straight to `-f "%1"`. This integration is designed to use **`XlFitGUI.exe`**, the console-free build, so no window ever flashes on screen.
 
 Two registry files are included for this purpose:
 
@@ -111,7 +109,7 @@ Two registry files are included for this purpose:
 
 ### Installing the context menu entry
 
-1. Place `XlFitGUI.exe` in the path referenced by `AddContextMenu.reg` (`C:\Tools\XlFit\XlFitGUI.exe` by default), or edit the `.reg` file to match your own installation path and icon.
+1. Place `XlFitGUI.exe` in the path referenced by `AddContextMenu.reg` (`C:\Tools\XlFit\XlFitGUI.exe` by default), or edit the `.reg` file to match your own installation path.
 2. Double-click `AddContextMenu.reg` and confirm the prompt to merge it into the registry.
 
 Once installed, right-clicking any `.xls`/`.xlsx` file in Explorer will show an **"Excel Auto Fit"** option, and `XlFitGUI.exe` will also appear as an option in the "Open with" dialog.
@@ -131,7 +129,7 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 ## Icon Credits
 
-XlFit.ico icon used in this project was downloaded from Icon-Icons.com under the CC BY 4.0 license.
+XlFit.ico icon used in this project was downloaded from `Icon-Icons.com` under the CC BY 4.0 license.
 
 - Author: `Those Icons`.
 - Source: https://icon-icons.com/authors/639-those-icons
