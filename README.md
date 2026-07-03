@@ -122,9 +122,9 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 ### Example
 
-Right-clicking an `.xlsx` file and selecting **"Excel Auto Fit"** runs `XlFitGUI.exe` in the background and shows a confirmation dialog once the file has been auto-fitted:
+The GIF below shows both ways to use `XlFit` from Windows Explorer: right-clicking one or more `.xls`/`.xlsx` files and selecting **"Excel Auto Fit"** from the context menu, or right-clicking a single file, choosing **"Open with"**, and selecting **"Excel Auto Fit"** from the list.
 
-![Excel Auto Fit demo](demo.gif)
+![Excel Auto Fit demo](XlFitGUI.gif)
 
 ---
 
