@@ -118,8 +118,6 @@ Once installed, right-clicking any `.xls`/`.xlsx` file in Explorer will show an 
 
 Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the registry keys created by `AddContextMenu.reg`, removing both the context menu entry and the "Open with" registration.
 
----
-
 ### Example
 
 The GIF below shows both ways to use `XlFit` from Windows Explorer in Windows 11. Right-clicking one or more `.xls`/`.xlsx` files and selecting **"Excel Auto Fit"** from the context menu, or right-clicking a single file, choosing **"Open with"**, and selecting **"Excel Auto Fit"** from the list:
