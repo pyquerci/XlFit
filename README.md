@@ -120,6 +120,14 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 ---
 
+### Example
+
+Right-clicking an `.xlsx` file and selecting **"Excel Auto Fit"** runs `XlFitGUI.exe` in the background and shows a confirmation dialog once the file has been auto-fitted:
+
+![Excel Auto Fit demo](demo.gif)
+
+---
+
 ## Known Issues
 
 - Although Excel is launched with `Visible = False`, the Excel window may occasionally flash briefly on screen during processing. This is caused by Excel's own internal behavior during COM automation and is not something `XlFit` can fully control; it happens unpredictably and does not affect the outcome of the operation.
