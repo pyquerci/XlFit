@@ -132,7 +132,7 @@ The GIF below shows both ways to use `XlFit` from Windows Explorer in Windows 11
 
 - Although Excel is launched with `Visible = False`, the Excel window may occasionally flash briefly on screen during processing. This is caused by Excel's own internal behavior during COM automation and is not something `XlFit` can fully control; it happens unpredictably and does not affect the outcome of the operation.
 - `XlFitGUI.exe` is built with `--noconsole`, so `-h/--help` and `-a/--about` produce no visible output, even when run from a terminal, since the executable has no console attached to print to. Use `XlFit.exe` instead if you need the full CLI, including help and about.
-- - The context menu and "Open with" entries, as well as all dialog messages shown by the tool, are only available in English. If you'd like a localized version, edit the relevant strings directly in `XlFit.py`.
+- The context menu and "Open with" entries, as well as all dialog messages shown by the tool, are only available in English. If you'd like a localized version, edit the relevant strings directly in `XlFit.py`.
 
 ---
 
