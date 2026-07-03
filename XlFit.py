@@ -93,7 +93,7 @@ def main() -> None:
         print("error: no file specified, use -f/--file")
         sys.exit(1)
 
-    file = args.file
+    file = os.path.abspath(args.file)
     name = os.path.basename(file)
 
     if is_file_locked(file):
