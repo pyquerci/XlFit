@@ -46,7 +46,7 @@ Two pre-compiled Windows executables are included in the repository, built with 
 | Executable | Intended use | Build command |
 |---|---|---|
 | `XlFit.exe` | Command line: `-h`, `-a`, and `-f` output is shown in the console | `pyinstaller --onefile --manifest="XlFit.manifest" XlFit.py` |
-| `XlFitGUI.exe` | Windows Explorer context menu / "Open with": no console window ever shown | `pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" XlFit.py` |
+| `XlFitGUI.exe` | Windows Explorer context menu / "Open with": no console window ever shown | `pyinstaller --onefile --noconsole --icon="XlFit.ico" --manifest="XlFit.manifest" --name XlFitGUI XlFit.py` |
 
 Both are built from the exact same code; the only difference is the presence of `--noconsole` and `--icon`. `--manifest` embeds `XlFit.manifest` in both, which declares per-monitor DPI awareness so dialogs render sharply on high-DPI displays.
 
