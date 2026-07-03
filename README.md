@@ -138,7 +138,7 @@ The GIF below shows both ways to use `XlFit` from Windows Explorer in Windows 11
 
 XlFit.ico icon used in this project was downloaded from `Icon-Icons.com` under the CC BY 4.0 license.
 
-- Author: `Those Icons`.
+- Author: Those Icons.
 - Source: https://icon-icons.com/authors/639-those-icons
 
 ---
