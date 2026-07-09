@@ -1,4 +1,4 @@
-# XlFit
+# XlFit (Excel AutoFit)
 
 A command-line tool that auto-fits columns and rows in Excel files via COM automation on Windows, with optional integration into the Windows Explorer right-click context menu for GUI use.
 
