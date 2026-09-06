@@ -144,8 +144,8 @@ XlFit.ico icon used in this project was downloaded from `Icon-Icons.com` under t
 ---
 
 ## License
-This project is licensed under the **GNU General Public License v3.0 (GPLv3)**. You are free to use, modify, and distribute this software under the terms of that license. See the [LICENSE](https://github.com/pyquerci/XlFit/blob/main/LICENSE) file for the full license text.
 
+This project is licensed under the **GNU General Public License v3.0 (GPLv3)**. You are free to use, modify, and distribute this software under the terms of that license. See the [LICENSE](https://github.com/pyquerci/XlFit/blob/main/LICENSE) file for the full license text.
 
 ---
 
