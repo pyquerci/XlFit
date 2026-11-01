@@ -41,9 +41,10 @@ It is particularly useful as a quick finishing step after generating spreadsheet
 ```bash
 git clone https://github.com/pyquerci/XlFit.git
 cd XlFit
+pip install -r requirements.txt
 ```
 
-No installation required. Run directly with Python.
+Install the third-party packages via pip and run it directly with Python from the project directory.
 
 ### Windows
 
