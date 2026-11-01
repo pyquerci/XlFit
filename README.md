@@ -128,7 +128,7 @@ Double-click `RemoveContextMenu.reg` and confirm the prompt. This deletes the re
 
 The GIF below shows both ways to use `XlFit` from Windows Explorer in Windows 11. Right-clicking one or more `.xls`/`.xlsx` files and selecting **"Excel Auto Fit"** from the context menu, or right-clicking a single file, choosing **"Open with"**, and selecting **"Excel Auto Fit"** from the list:
 
-![Excel Auto Fit demo](XlFitGUI.gif)
+![Excel Auto Fit demo](demo.gif)
 
 ---
 
