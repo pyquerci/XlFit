@@ -46,8 +46,6 @@ pip install -r requirements.txt
 
 Install the third-party packages via pip and run `XlFit.py` directly with Python from the project directory. This is the command line way; day to day, the Explorer context menu is easier.
 
----
-
 ### Windows
 
 Two pre-compiled Windows executables are included in the repository, built with PyInstaller 6.19.0 from the same `XlFit.py` script but with different build options, depending on how you intend to use them:
