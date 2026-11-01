@@ -44,7 +44,9 @@ cd XlFit
 pip install -r requirements.txt
 ```
 
-Install the third-party packages via pip and run it directly with Python from the project directory.
+Install the third-party packages via pip and run `XlFit.py` directly with Python from the project directory. This is the command line way; day to day, the Explorer context menu is easier.
+
+---
 
 ### Windows
 
